@@ -161,7 +161,6 @@ export const otpVerification =(email,otp)=>
   async(dispatch)=>{
     dispatch(authSlice.actions.otpVerificationRequest());
     await api.post("/auth/verify-otp",{email,otp},{
-     
       headers:{
         "Content-Type":"application/json"
       }
@@ -170,7 +169,6 @@ export const otpVerification =(email,otp)=>
     }).catch(error=>{
       dispatch(authSlice.actions.otpVerificationFailed(error.response.data.message))
     })
-
 }
 
 export const login =(data)=>async(dispatch)=>{
@@ -187,7 +185,6 @@ export const login =(data)=>async(dispatch)=>{
     }).catch(error=>{
       dispatch(authSlice.actions.loginFailed(error.response.data.message))
     })
-
 }
 
 export const logOut =()=>
@@ -201,7 +198,6 @@ export const logOut =()=>
     }).catch(error=>{
       dispatch(authSlice.actions.logOutFailed(error.response.data.message))
     })
-
 }
 
 export const getUser =()=>
@@ -209,9 +205,7 @@ export const getUser =()=>
     dispatch(authSlice.actions.getUserRequest());
     await api.
     get("/auth/me",
-    {
-      withCredentials:true,
-    }).then(res=>{
+    ).then(res=>{
       dispatch(authSlice.actions.getUserSuccess(res.data.user))
     }).catch(error=>{
       dispatch(authSlice.actions.getUserFailed(error.response.data.message))
@@ -223,7 +217,6 @@ export const forgotPassword =(data)=>async(dispatch)=>{
   await api.post("/auth/password/forgot",
   data,
   {
-   
     headers:{
       "Content-Type":"application/json"
     }
