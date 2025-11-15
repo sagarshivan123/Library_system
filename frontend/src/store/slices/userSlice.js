@@ -51,9 +51,7 @@ export const addNewAdmin=(data)=>async(dispatch)=>{
   dispatch(userSlice.actions.addNewAdminRequest());
   await api.post("/user/add/new-admin",data,
     {
-      headers:{
-        "Content-Type":"multipart/form-data"
-      }
+     
     }).then(res=>{
       dispatch(userSlice.actions.addNewAdminSuccess());
       toast.success(res.data.message);

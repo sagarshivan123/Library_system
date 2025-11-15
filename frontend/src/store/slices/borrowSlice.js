@@ -101,12 +101,7 @@ export const fetchAllBorrowedBooks = () => async (dispatch) => {
 export const recordBorrowedBook = ({email,id}) => async (dispatch) => {
   // console.log("Data passed to thunk:", email, id);
   dispatch(borrowSlice.actions.recordBookRequest())
-  await api.post(`/borrow/record-borrow-book/${id}`, {email}, {
-  
-  headers:{
-    "Content-Type":"application/json"
-  }
-}).
+  await api.post(`/borrow/record-borrow-book/${id}`, {email},).
   then(res=>{
     dispatch(borrowSlice.actions.recordBookSuccess(res.data.message))
     dispatch(toggleRecordBookPopup()); 
@@ -122,9 +117,7 @@ export const returnBook=({email,bookId})=>async(dispatch)=>{
     await api.put(`/borrow/return-borrowed-book/${bookId}`,
     {email},
     {
-      headers:{
-        "Content-Type":"application/json"
-      }
+     
     }).then(res=>{
       // console.log("output",res.data); // Inspect here
 

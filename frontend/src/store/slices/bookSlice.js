@@ -88,9 +88,6 @@ export const addBook=(data)=>async(dispatch)=>{
   dispatch(bookSlice.actions.addBookRequest())
   await api.post('/book/admin/add',data,{
    
-    headers:{
-      "Content-Type":"application/json"
-    }
   }).then(res=>{
     bookSlice.actions.addBookSuccess(res.data.message)
     toast.success(res.data.message);

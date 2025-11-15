@@ -147,9 +147,7 @@ export const register=(data)=>
 async(dispatch)=>{
   dispatch(authSlice.actions.registerRequest());
   await api.post("/auth/register",data,{
-    headers:{
-      "Content-Type":"application/json"
-    }
+   
   }).then(res=>{
     dispatch(authSlice.actions.registerSuccess(res.data))
   }).catch(error=>{
@@ -177,9 +175,7 @@ export const login =(data)=>async(dispatch)=>{
     post("/auth/login",
     data,
     {
-      headers:{
-        "Content-Type":"application/json"
-      }
+   
     }).then(res=>{
       dispatch(authSlice.actions.loginSuccess(res.data))
     }).catch(error=>{
@@ -217,9 +213,7 @@ export const forgotPassword =(data)=>async(dispatch)=>{
   await api.post("/auth/password/forgot",
   data,
   {
-    headers:{
-      "Content-Type":"application/json"
-    }
+   
   }).then(res=>{
     dispatch(authSlice.actions.forgotPasswordSuccess(res.data.message))
   }).catch(error=>{
@@ -234,10 +228,7 @@ export const resetPassword =(data,token)=>async(dispatch)=>{
   put(`/auth/password/reset/${token}`,
   data,
   {
-    
-    headers:{
-      "Content-Type":"application/json"
-    }
+  
   }).then(res=>{
     dispatch(authSlice.actions.resetPasswordSuccess(res.data))
   }).catch(error=>{
@@ -251,9 +242,7 @@ export const updatePassword =(data)=>async(dispatch)=>{
   put("/auth/password/update",
   data,
   {
-    headers:{
-      "Content-Type":"application/json"
-    }
+    
   }).then(res=>{
     dispatch(authSlice.actions.updatePasswordSuccess(res.data.message))
   }).catch(error=>{
