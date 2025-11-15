@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {toast} from 'react-toastify';
-
+import api from '../api/api';
 
 const userSlice=createSlice({
   name:'user',
@@ -35,8 +35,8 @@ const userSlice=createSlice({
 export const fetchAllUsers=()=>async(dispatch)=>{
   // console.log("fetchAllUsersRequest dispatched");
   dispatch(userSlice.actions.fetchAllUsersRequest());
-  await axios.get("https://library-system-j2ah.onrender.com/api/v1/user/all",
-    {withCredentials:true}).
+  await api.get("/user/all",
+ ).
     then(res=>{
   console.log("data",res.data);
 
@@ -49,8 +49,8 @@ export const fetchAllUsers=()=>async(dispatch)=>{
 
 export const addNewAdmin=(data)=>async(dispatch)=>{
   dispatch(userSlice.actions.addNewAdminRequest());
-  await axios.post("https://library-system-j2ah.onrender.com/api/v1/user/add/new-admin",data,
-    {withCredentials:true,
+  await api.post("/user/add/new-admin",data,
+    {
       headers:{
         "Content-Type":"multipart/form-data"
       }

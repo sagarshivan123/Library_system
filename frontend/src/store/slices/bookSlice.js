@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import api from '../api/api.js'
 import { createSlice } from '@reduxjs/toolkit'
 import { toggleAddBookPopup } from './popupSlice'
 import {toast} from "react-toastify"
@@ -64,10 +64,8 @@ reducers:{
 })
 export const fetchAllBooks = () => async (dispatch) => {
   dispatch(bookSlice.actions.fetchBooksRequest());
-  await axios
-    .get("https://library-system-j2ah.onrender.com/api/v1/book/all", {
-      withCredentials: true,
-    })
+  await api
+    .get("/book/all")
     .then((res) => {
       dispatch(bookSlice.actions.fetchBooksSuccess(res.data.books));
     })
@@ -79,9 +77,7 @@ export const fetchAllBooks = () => async (dispatch) => {
 export const deleteBook=(bookId)=>async(dispatch)=>{
   try {
     dispatch(bookSlice.actions.deleteBookRequest())
-      const {data}=await axios.delete(`https://library-system-j2ah.onrender.com/api/v1/book/delete/${bookId}`,{
-        withCredentials:true,
-      })
+      const {data}=await api.delete(`/book/delete/${bookId}`)
       dispatch(bookSlice.actions.deleteBookSuccess({message:data.message,bookId}))
   } catch (error) {
     dispatch(bookSlice.actions.deleteBookFailed(error.response.data.message)) 
@@ -90,8 +86,8 @@ export const deleteBook=(bookId)=>async(dispatch)=>{
 
 export const addBook=(data)=>async(dispatch)=>{
   dispatch(bookSlice.actions.addBookRequest())
-  await axios.post('https://library-system-j2ah.onrender.com/api/v1/book/admin/add',data,{
-    withCredentials:true,
+  await api.post('/book/admin/add',data,{
+   
     headers:{
       "Content-Type":"application/json"
     }
