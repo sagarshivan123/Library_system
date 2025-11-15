@@ -65,7 +65,7 @@ reducers:{
 export const fetchAllBooks = () => async (dispatch) => {
   dispatch(bookSlice.actions.fetchBooksRequest());
   await axios
-    .get("http://localhost:4000/api/v1/book/all", {
+    .get("https://library-system-j2ah.onrender.com/api/v1/book/all", {
       withCredentials: true,
     })
     .then((res) => {
@@ -79,7 +79,7 @@ export const fetchAllBooks = () => async (dispatch) => {
 export const deleteBook=(bookId)=>async(dispatch)=>{
   try {
     dispatch(bookSlice.actions.deleteBookRequest())
-      const {data}=await axios.delete(`http://localhost:4000/api/v1/book/delete/${bookId}`,{
+      const {data}=await axios.delete(`https://library-system-j2ah.onrender.com/api/v1/book/delete/${bookId}`,{
         withCredentials:true,
       })
       dispatch(bookSlice.actions.deleteBookSuccess({message:data.message,bookId}))
@@ -90,7 +90,7 @@ export const deleteBook=(bookId)=>async(dispatch)=>{
 
 export const addBook=(data)=>async(dispatch)=>{
   dispatch(bookSlice.actions.addBookRequest())
-  await axios.post('http://localhost:4000/api/v1/book/admin/add',data,{
+  await axios.post('https://library-system-j2ah.onrender.com/api/v1/book/admin/add',data,{
     withCredentials:true,
     headers:{
       "Content-Type":"application/json"

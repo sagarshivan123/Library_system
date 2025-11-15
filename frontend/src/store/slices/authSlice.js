@@ -145,7 +145,7 @@ export const resetAuthSlice=()=>(dispatch)=>{
 export const register=(data)=>
 async(dispatch)=>{
   dispatch(authSlice.actions.registerRequest());
-  await axios.post("http://localhost:4000/api/v1/auth/register",data,{
+  await axios.post("https://library-system-j2ah.onrender.com/api/v1/auth/register",data,{
     withCredentials:true,
     headers:{
       "Content-Type":"application/json"
@@ -160,7 +160,7 @@ async(dispatch)=>{
 export const otpVerification =(email,otp)=>
   async(dispatch)=>{
     dispatch(authSlice.actions.otpVerificationRequest());
-    await axios.post("http://localhost:4000/api/v1/auth/verify-otp",{email,otp},{
+    await axios.post("https://library-system-j2ah.onrender.com/api/v1/auth/verify-otp",{email,otp},{
       withCredentials:true,
       headers:{
         "Content-Type":"application/json"
@@ -176,7 +176,7 @@ export const otpVerification =(email,otp)=>
 export const login =(data)=>async(dispatch)=>{
     dispatch(authSlice.actions.loginRequest());
     await axios.
-    post("http://localhost:4000/api/v1/auth/login",
+    post("https://library-system-j2ah.onrender.com/api/v1/auth/login",
     data,
     {
       withCredentials:true,
@@ -195,7 +195,7 @@ export const logOut =()=>
   async(dispatch)=>{
     dispatch(authSlice.actions.logOutRequest());
     await axios.
-    get("http://localhost:4000/api/v1/auth/logOut",
+    get("https://library-system-j2ah.onrender.com/auth/logOut",
     {
       withCredentials:true,
     }).then(res=>{
@@ -211,7 +211,7 @@ export const getUser =()=>
   async(dispatch)=>{
     dispatch(authSlice.actions.getUserRequest());
     await axios.
-    get("http://localhost:4000/api/v1/auth/me",
+    get("https://library-system-j2ah.onrender.com/api/v1/auth/me",
     {
       withCredentials:true,
     }).then(res=>{
@@ -223,7 +223,7 @@ export const getUser =()=>
 
 export const forgotPassword =(data)=>async(dispatch)=>{
   dispatch(authSlice.actions.forgotPasswordRequest());
-  await axios.post("http://localhost:4000/api/v1/auth/password/forgot",
+  await axios.post("https://library-system-j2ah.onrender.com/api/v1/auth/password/forgot",
   data,
   {
     withCredentials:true,
@@ -241,7 +241,7 @@ export const forgotPassword =(data)=>async(dispatch)=>{
 export const resetPassword =(data,token)=>async(dispatch)=>{
   dispatch(authSlice.actions.resetPasswordRequest());
   await axios.
-  put(`http://localhost:4000/api/v1/auth/password/reset/${token}`,
+  put(`https://library-system-j2ah.onrender.com/api/v1/auth/password/reset/${token}`,
   data,
   {
     withCredentials:true,
@@ -258,7 +258,7 @@ export const resetPassword =(data,token)=>async(dispatch)=>{
 export const updatePassword =(data)=>async(dispatch)=>{
   dispatch(authSlice.actions.updatePasswordRequest());
   await axios.
-  put("http://localhost:4000/api/v1/auth/password/update",
+  put("hhttps://library-system-j2ah.onrender.com/api/v1/auth/password/update",
   data,
   {
     withCredentials:true,

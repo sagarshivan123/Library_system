@@ -35,7 +35,7 @@ const userSlice=createSlice({
 export const fetchAllUsers=()=>async(dispatch)=>{
   // console.log("fetchAllUsersRequest dispatched");
   dispatch(userSlice.actions.fetchAllUsersRequest());
-  await axios.get("http://localhost:4000/api/v1/user/all",
+  await axios.get("https://library-system-j2ah.onrender.com/api/v1/user/all",
     {withCredentials:true}).
     then(res=>{
   console.log("data",res.data);
@@ -49,7 +49,7 @@ export const fetchAllUsers=()=>async(dispatch)=>{
 
 export const addNewAdmin=(data)=>async(dispatch)=>{
   dispatch(userSlice.actions.addNewAdminRequest());
-  await axios.post("http://localhost:4000/api/v1/user/add/new-admin",data,
+  await axios.post("https://library-system-j2ah.onrender.com/api/v1/user/add/new-admin",data,
     {withCredentials:true,
       headers:{
         "Content-Type":"multipart/form-data"
