@@ -26,6 +26,7 @@ app.use(cors({
     "http://localhost:3000",  
     "http://127.0.0.1:5500", 
     "http://localhost:5173",
+    "https://library-system-git-main-sagarshivan123s-projects.vercel.app",
     "https://library-system-quok999il-sagarshivan123s-projects.vercel.app"
   ],
   methods:["GET","POST","PUT","DELETE"],
