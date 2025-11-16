@@ -10,7 +10,6 @@ import userRouter from './routes/userRouter.js';
 import { notifyUsers } from './services/notifyUsers.js';
 import { removeUnverifiedAccounts } from './services/removeUnverifiedAccount.js';
 import { errorMiddleware } from './Middleware/errorMiddlewares.js';
-import path from "path";
 
 dotenv.config({ path: 'config/.env' });
 const app = express();
@@ -65,12 +64,6 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/book", bookRouter);
 app.use("/api/v1/borrow", borrowRouter);
 app.use("/api/v1/user", userRouter);
-
-app.use(express.static(path.join(process.cwd(), "frontend", "dist")));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(process.cwd(), "frontend", "dist", "index.html"));
-});
 
 // Background jobs
 notifyUsers();
