@@ -63,6 +63,7 @@ const user=await User.create({
 // Generate verification code and save user
 const verificationCode= user.generateVerificationCode();
 await user.save();
+console.log("user",user);
 await sendVerificationCode(verificationCode,email );
 res.status(200).json({
   success:true,

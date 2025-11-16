@@ -13,6 +13,8 @@ export async function sendVerificationCode(verificationCode, email) {
       message,
     });
 
+    console.log("📧 sendEmail result:", result);
+
     // 3️⃣ Check if the sendEmail function succeeded
     if (!result.success) {
       throw new Error(result.error || "Failed to send verification email");

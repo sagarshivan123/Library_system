@@ -19,11 +19,13 @@ const Register=()=>{
  const navigateTo=useNavigate();
 
  const handleRegister=(e)=>{
+  console.log("hi");
   e.preventDefault();
   const data=new FormData();
   data.append("name",name);
   data.append("email",email);
   data.append("password",password);
+  console.log("data",data);
   dispatch(register(data));
  }
 
