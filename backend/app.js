@@ -68,7 +68,7 @@ app.use("/api/v1/user", userRouter);
 
 app.use(express.static(path.join(process.cwd(), "frontend", "dist")));
 
-app.get("*", (req, res) => {
+app.get('/:path*', (req, res) => {
   res.sendFile(path.join(process.cwd(), "frontend", "dist", "index.html"));
 });
 
