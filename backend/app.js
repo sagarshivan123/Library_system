@@ -59,6 +59,9 @@ app.use(expressFileUpload({
   tempFileDir: "/tmp/"
 }));
 
+app.get("/", (req, res) => {
+  res.send("Library Management System API is running...");
+});
 // Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/book", bookRouter);
