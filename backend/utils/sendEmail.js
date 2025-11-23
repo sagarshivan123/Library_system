@@ -2,16 +2,21 @@ import nodemailer from "nodemailer";
 
 export const sendEmail = async ({ email, subject, message }) => {
   try {
+    console.log("email send...")
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      // service: process.env.SMTP_SERVICE,
-      port: process.env.SMTP_PORT || 465,
-      secure: true, // true if using port 465 (SSL)
+      host: process.env.SMTP_HOST || "smtp.gmail.com",
+      port: 587,
+      secure: false, // ⚠ important for 587
       auth: {
         user: process.env.SMTP_MAIL,
         pass: process.env.SMTP_PASSWORD,
       },
     });
+    transporter.verify((err, success) => {
+      if (err) console.log("SMTP ERROR:", err);
+      else console.log("SMTP WORKING");
+    });
+    
 
     const mailOptions = {
       from: `"Bookworm Library" <${process.env.SMTP_MAIL}>`,
