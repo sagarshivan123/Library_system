@@ -73,8 +73,8 @@ return <>
   <div className="block md:hidden font-semibold mt-5"></div>
   <div>
     <p>
-    New to our plateform?{" SIGN UP "}
-     <Link to={"/register"} className="text-sm text-gray-500 hover:underline"></Link></p>
+    New to our plateform?
+     <Link to={"/register"} className="text-sm text-gray-500 hover:underline">{" SIGN UP "}</Link></p>
   </div>
   <button type="submit" className="border-2 mt-5 border-black w-full font-semibold bg-black text-white py-2 rounded-lg hover:bg-white hover:text-black transition">SIGN IN</button>
   </form>

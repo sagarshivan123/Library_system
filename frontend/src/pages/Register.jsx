@@ -33,7 +33,8 @@ const Register=()=>{
   if(message){
     toast.success(message);
     dispatch(resetAuthSlice());
-    navigateTo(`/otp-verification/${email}`)}
+    navigateTo(`/login`)
+    }
   if(error){
     toast.error(error);
     dispatch(resetAuthSlice());

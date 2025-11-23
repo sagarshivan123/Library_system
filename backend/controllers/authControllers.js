@@ -35,13 +35,6 @@ const registerationAttemptsByUser=await User.find({
   email,accountVerified:false
 })
 
-if(registerationAttemptsByUser.length>=5){
-  return next(
-    new ErrorHandler(
-      "You have exceeded the number of registration attempts. Please try again later.",400
-    )
-  );
-}
 
 
 // Validate password length
@@ -67,8 +60,13 @@ console.log("user",user);
 await sendVerificationCode(verificationCode,email );
 res.status(200).json({
   success:true,
-  message:"Registered successfully, please verify your email",
+  message:"Registered successfully.",
 })
+
+user.accountVerified=true;
+user.verificationCode=null;
+user.verificationCodeExpire=null;
+await user.save({validateModifiedOnly:true});
 
 }catch(err){
   next(err);
